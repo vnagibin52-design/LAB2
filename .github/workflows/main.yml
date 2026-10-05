@@ -1,1 +1,47 @@
+name: CI
 
+on:         
+  push:
+    branches: [ "main" ]  
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        os: [windows-latest]
+
+        #Клонирую репозиторий в runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+        # Подключаю лкружение компилятора Microsoft Visual C++
+      - name: Setup MSVC environment (Windows only)
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
+        #Запуск конфигурации CMake
+      - name: Configure with CMake (Windows)
+        if: matrix.os == 'windows-latest'
+        run: cmake -B build 
+        shell: cmd
+
+        #Сборка
+      - name: Build with CMake (Windows)
+        if: matrix.os == 'windows-latest'
+        run: cmake --build build --config Release
+        shell: cmd
+
+        #Загрузка артефактов на GitHub
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.os }}-Sortirovka-release
+          path: build\Release\
+          retention-days: 7
