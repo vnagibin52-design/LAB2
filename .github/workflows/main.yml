@@ -49,12 +49,14 @@ jobs:
         shell: bash
 
       - name: Prepare artifacts (Windows)
+        if: matrix.os == 'windows-latest'
         run: |
           mkdir ReadyFiles
           cp ip_filter.tsv ReadyFiles/
           cp build/Release/Sortirovka.exe ReadyFiles/
 
       - name: Prepare artifacts (Linux)
+        if: matrix.os == 'ubuntu-latest'
         run: |
           mkdir ReadyFiles
           cp ip_filter.tsv ReadyFiles/
