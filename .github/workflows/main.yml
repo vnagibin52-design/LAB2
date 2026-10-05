@@ -55,7 +55,7 @@ jobs:
         with:
           name: windows-Sortirovka-release
           path: |
-            build\Release\
+            build\Release\Sortirovka.exe
             ip_filter.tsv 
           retention-days: 7
 
@@ -70,6 +70,6 @@ jobs:
         with:
           name: linux-Sortirovka-release
           path: |
-            build/Release/
+            build/Sortirovka
             ip_filter.tsv 
           retention-days: 7
