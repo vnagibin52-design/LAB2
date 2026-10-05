@@ -54,6 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-Sortirovka-release
+          flatten: true
           path: |
             build\Release\Sortirovka.exe
             ip_filter.tsv 
@@ -69,6 +70,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-Sortirovka-release
+          flatten: true
           path: |
             build/Sortirovka
             ip_filter.tsv 
