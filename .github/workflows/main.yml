@@ -47,5 +47,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}-Sortirovka-release
-          path: build\Release\
+          path: build\Release\Sortirovka.exe
           retention-days: 7
