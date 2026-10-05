@@ -14,7 +14,7 @@ jobs:
       contents: write
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [windows-latest, ubuntu-latest]
 
         #Клонирую репозиторий в runner
     steps:
@@ -31,10 +31,11 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: cmake -B build 
         shell: cmd
-
-      - name: Show current directory
-        run: pwd
-        shell: cmd
+        
+      - name: Configure with CMake (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: cmake -B build
+        shell: bash
 
         #Сборка
       - name: Build with CMake (Windows)
@@ -42,10 +43,24 @@ jobs:
         run: cmake --build build --config Release
         shell: cmd
 
+      - name: Build with CMake (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: cmake --build build
+        shell: bash
+
         #Загрузка артефактов на GitHub
-      - name: Upload release artifacts
+      - name: Upload release artifacts (Windows)
+        if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.os }}-Sortirovka-release
+          name: windows-Sortirovka-release
           path: build\Release\
+          retention-days: 7
+
+      - name: Upload release artifacts (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-Sortirovka-release
+          path: build\
           retention-days: 7

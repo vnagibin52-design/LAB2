@@ -10,7 +10,7 @@ int main() {
     std::ifstream file("ip_filter.tsv"); // Открываем файл для чтения
     
     if (!file.is_open()) {
-        std::cerr << "Не удалось открыть файл!" << std::endl;
+        std::cerr << "No such file!" << std::endl;
         return 1;
     }
 
