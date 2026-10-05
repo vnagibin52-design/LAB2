@@ -48,7 +48,13 @@ jobs:
         run: cmake --build build --config Release
         shell: bash
 
-      - name: Prepare artifacts
+      - name: Prepare artifacts (Windows)
+        run: |
+          mkdir ReadyFiles
+          cp ip_filter.tsv ReadyFiles/
+          cp build/Release/Sortirovka.exe ReadyFiles/
+
+      - name: Prepare artifacts (Linux)
         run: |
           mkdir ReadyFiles
           cp ip_filter.tsv ReadyFiles/
@@ -61,7 +67,7 @@ jobs:
         with:
           name: windows-Sortirovka-release
           flatten: true
-          path: ReadyFiles\ 
+          path: ReadyFiles/ 
           retention-days: 7
 
       - name: Upload release artifacts (Linux)
