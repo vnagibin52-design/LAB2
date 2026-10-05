@@ -56,7 +56,7 @@ jobs:
           name: windows-Sortirovka-release
           flatten: true
           path: |
-            build\Release\Sortirovka.exe
+            build\Release\Sortirovka.exe*
             ip_filter.tsv 
           retention-days: 7
 
@@ -72,6 +72,6 @@ jobs:
           name: linux-Sortirovka-release
           flatten: true
           path: |
-            build/Sortirovka
+            build/Sortirovka*
             ip_filter.tsv 
           retention-days: 7
