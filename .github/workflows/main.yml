@@ -67,5 +67,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-Sortirovka-release
-          path: build\
+          path: build/Sortirovka
           retention-days: 7
