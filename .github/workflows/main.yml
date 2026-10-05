@@ -48,6 +48,12 @@ jobs:
         run: cmake --build build --config Release
         shell: bash
 
+      - name: Prepare artifacts
+        run: |
+          mkdir ReadyFiles
+          cp ip_filter.tsv ReadyFiles/
+          cp build/Sortirovka ReadyFiles/
+
         #Загрузка артефактов на GitHub
       - name: Upload release artifacts (Windows)
         if: matrix.os == 'windows-latest'
@@ -55,15 +61,8 @@ jobs:
         with:
           name: windows-Sortirovka-release
           flatten: true
-          path: |
-            build\Release\Sortirovka.exe*
-            ip_filter.tsv 
+          path: ReadyFiles\ 
           retention-days: 7
-
-      - name: find file
-        if: matrix.os == 'ubuntu-latest'
-        run: find . -maxdepth 2 -executable -type f
-        shell: bash
 
       - name: Upload release artifacts (Linux)
         if: matrix.os == 'ubuntu-latest'
@@ -71,7 +70,5 @@ jobs:
         with:
           name: linux-Sortirovka-release
           flatten: true
-          path: |
-            build/Sortirovka*
-            ip_filter.tsv 
+          path: ReadyFiles/
           retention-days: 7
