@@ -70,8 +70,6 @@ int main() {
     });
 
     ip_out(list_of_tuples);
-   
-    system("pause");
 
     return 0;
 }
