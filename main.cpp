@@ -8,8 +8,16 @@
 #include <algorithm>
 #include "ip_out.h"
 
-int main() {
-    std::ifstream file("ip_filter.tsv"); // Открываем файл для чтения
+int main(int argc, char* argv[]) {
+
+     if (argc < 2) {
+        std::cerr << "Need path to file!" << std::endl;
+        return 1;
+    }
+
+    std::string filePath = argv[1];
+
+    std::ifstream file(filePath);
     
     if (!file.is_open()) {
         std::cerr << "No such file!" << std::endl;
