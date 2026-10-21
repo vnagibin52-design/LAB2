@@ -6,10 +6,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(Sortirovka)
 
 add_library(ip_out_lib ip_out.cpp ip_out.h)
+add_library(isRightTuple_lib isRightTuple.cpp isRightTuple.h)
 
 add_executable(Sortirovka main.cpp)
 
 target_link_libraries(Sortirovka PRIVATE ip_out_lib)
+target_link_libraries(Sortirovka PRIVATE isRightTuple_lib)
 
 # Включаем поддержку тестирования и добавляем подпапку с тестами
 enable_testing()

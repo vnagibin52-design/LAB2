@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <algorithm>
 #include "ip_out.h"
+#include "isRightTuple.h"
 
 int main(int argc, char* argv[]) {
 
@@ -63,6 +64,11 @@ int main(int argc, char* argv[]) {
             list_of_tuples.push_back(myTuple);
         
             std::getline(file, line);
+        }
+
+        if(isRightTuple(list_of_tuples) == false){
+            std::cerr << "Wrong data in vector!" << std::endl;
+            return 1;
         }
 
         file.close(); // Закрываем файл
