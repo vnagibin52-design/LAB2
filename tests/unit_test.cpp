@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <cstdint>
 #include "../ip_out.h"
 
 TEST(VectorTest, VectorIsNotEmpty) {

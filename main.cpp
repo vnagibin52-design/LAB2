@@ -4,6 +4,7 @@
 #include <tuple>
 #include <vector>
 #include <cstdlib>
+#include <cstdint>
 #include <algorithm>
 #include "ip_out.h"
 
