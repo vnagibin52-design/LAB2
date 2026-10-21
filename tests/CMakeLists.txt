@@ -13,8 +13,8 @@ FetchContent_MakeAvailable(googletest)
 # 2. Создаем исполняемый файл для тестов
 add_executable(unit_test unit_test.cpp)
 
-# 3. Линкуем код наших тестов с Google Test и нашей библиотекой math_lib
-target_link_libraries(unit_test PRIVATE GTest::gtest_main ip_out_lib)
+# 3. Линкуем код наших тестов с Google Test и нашей библиотекой 
+target_link_libraries(unit_test PRIVATE GTest::gtest_main isRightTuple_lib)
 
 # 4. Регистрируем исполняемый файл в системе CTest (чтобы работала команда ctest)
 include(GoogleTest)

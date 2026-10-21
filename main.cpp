@@ -35,12 +35,22 @@ int main(int argc, char* argv[]) {
         std::tuple<uint8_t, uint8_t, uint8_t, uint8_t> myTuple;
 
         while (std::getline(file, line, '.')) {
+
+            if(isRightTuple(line) == false){
+                std::cerr << "Wrong data in file!" << std::endl;
+                return 1;
+            }
             
             std::get<0>(myTuple) = std::stoi(line);
 
             for (int i = 1; i <= 3; i++){
 
                 std::getline(file, line, '.');
+
+                if(isRightTuple(line) == false){
+                    std::cerr << "Wrong data in file!" << std::endl;
+                    return 1;
+                }
 
                 switch (i)
                 {
@@ -66,10 +76,6 @@ int main(int argc, char* argv[]) {
             std::getline(file, line);
         }
 
-        if(isRightTuple(list_of_tuples) == false){
-            std::cerr << "Wrong data in vector!" << std::endl;
-            return 1;
-        }
 
         file.close(); // Закрываем файл
 

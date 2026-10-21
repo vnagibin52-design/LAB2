@@ -1,15 +1,15 @@
 #include <gtest/gtest.h>
 #include <cstdint>
-#include "../ip_out.h"
+#include "../isRightTuple.h"
 
-TEST(VectorTest, VectorIsNotEmpty) {
-    std::vector<std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>> list_of_tuples = {{1,1,1,1}, {2, 2, 2, 2}, {3,3,3,3}};
-    EXPECT_EQ(ip_out(list_of_tuples), 0);
+TEST(VectorTest, VectorHasWrongData) {
+    std::string line = "300";
+    EXPECT_FALSE(isRightTuple(line));
 }
 
-TEST(VectorTest, VectorIsEmpty) {
-    std::vector<std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>> list_of_tuples = {};
-    EXPECT_EQ(ip_out(list_of_tuples), 1);
+TEST(VectorTest, VectorHasRightData) {
+    std::string line = "100";
+    EXPECT_TRUE(isRightTuple(line));
 }
 
 // Главная функция, которая запускает все тесты Google Test
