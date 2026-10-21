@@ -2,7 +2,7 @@
 #include <vector>
 #include "ip_out.h"
 
-int ip_out(std::vector<std::tuple<int, int, int, int>>& list) {
+int ip_out(std::vector<std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>>& list) {
 
     if (list.empty()) {
         return 1;

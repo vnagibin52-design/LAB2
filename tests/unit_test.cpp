@@ -2,12 +2,12 @@
 #include "../ip_out.h"
 
 TEST(VectorTest, VectorIsNotEmpty) {
-    std::vector<std::tuple<int, int, int, int>> list_of_tuples = {{1,1,1,1}, {2, 2, 2, 2}, {3,3,3,3}};
+    std::vector<std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>> list_of_tuples = {{1,1,1,1}, {2, 2, 2, 2}, {3,3,3,3}};
     EXPECT_EQ(ip_out(list_of_tuples), 0);
 }
 
 TEST(VectorTest, VectorIsEmpty) {
-    std::vector<std::tuple<int, int, int, int>> list_of_tuples = {};
+    std::vector<std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>> list_of_tuples = {};
     EXPECT_EQ(ip_out(list_of_tuples), 1);
 }
 

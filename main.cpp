@@ -15,12 +15,12 @@ int main() {
         return 1;
     }
 
-    std::vector<std::tuple<int, int, int, int>> list_of_tuples;
+    std::vector<std::tuple<uint8_t, uint8_t, uint8_t, uint8_t>> list_of_tuples;
 
 
     std::string line;
 
-    std::tuple<int, int, int, int> myTuple;
+    std::tuple<uint8_t, uint8_t, uint8_t, uint8_t> myTuple;
 
     while (std::getline(file, line, '.')) {
         
