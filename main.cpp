@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
         }
 
 
-        file.close(); // Закрываем файл
+        file.close();
 
         std::sort(list_of_tuples.begin(), list_of_tuples.end(), [](const auto& a, const auto& b) {
         if (std::get<0>(a) != std::get<0>(b)) {
