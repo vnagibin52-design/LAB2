@@ -78,24 +78,19 @@ int main(int argc, char* argv[]) {
 
 
         file.close();
+        using std::tuple;
+        using std::vector;
 
-        std::sort(list_of_tuples.begin(), list_of_tuples.end(), [](const auto& a, const auto& b) {
-        if (std::get<0>(a) != std::get<0>(b)) {
-            return std::get<0>(a) > std::get<0>(b); 
-        }
-        else if (std::get<1>(a) != std::get<1>(b)) {
-            return std::get<1>(a) > std::get<1>(b); 
-        }
-        else if (std::get<2>(a) != std::get<2>(b)) {
-            return std::get<2>(a) > std::get<2>(b); 
-        }
-        else return std::get<3>(a) > std::get<3>(b); 
-        });
+        std::sort(list_of_tuples.begin(), list_of_tuples.end(),
+            [](const tuple<uint8_t, uint8_t, uint8_t, uint8_t>& a,
+            const tuple<uint8_t, uint8_t, uint8_t, uint8_t>& b) {
+                return a < b;
+            });
 
-        ip_out(list_of_tuples);
+            ip_out(list_of_tuples);
 
-        return 0;
-    }
+            return 0;
+        }
 
     catch (const std::exception& e) {
         std::cerr << "Критическая ошибка: " << e.what() << std::endl;
